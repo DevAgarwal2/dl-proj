@@ -1,0 +1,43 @@
+project:
+  name: openmed
+  seed: 42
+  output_dir: runs/chestxray14
+
+data:
+  # Download NIH ChestX-ray14 and point these at your local copy.
+  root: data/raw/nih-chestxray14
+  images_dir: data/raw/nih-chestxray14/images
+  metadata_csv: data/raw/nih-chestxray14/Data_Entry_2017.csv
+  # Optional official split lists (train_val_list.txt / test_list.txt).
+  official_train_val_list: data/raw/nih-chestxray14/train_val_list.txt
+  official_test_list: data/raw/nih-chestxray14/test_list.txt
+  split_csv: data/processed/chestxray14_splits.csv
+  image_size: 320
+  batch_size: 32
+  num_workers: 4
+  val_fraction: 0.10
+  test_fraction: 0.10
+  patient_level_split: true
+  # Single-channel ImageNet-style stats are close enough for grayscale X-rays.
+  mean: [0.5056, 0.5056, 0.5056]
+  std: [0.252, 0.252, 0.252]
+
+model:
+  backbone: densenet121          # any timm backbone: densenet121, efficientnet_b0, ...
+  pretrained: true
+  num_classes: 14
+  dropout: 0.0
+
+train:
+  epochs: 15
+  optimizer: adamw
+  lr: 0.0001
+  weight_decay: 0.0001
+  scheduler: cosine
+  warmup_epochs: 1
+  pos_weight: true               # counter class imbalance in BCEWithLogitsLoss
+  amp: false                     # autocast is unreliable on MPS; leave off
+  grad_clip: 1.0
+  early_stopping_patience: 5
+  monitor: mean_auroc
+  device: auto                   # auto -> mps on Apple Silicon, else cuda/cpu

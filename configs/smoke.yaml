@@ -1,0 +1,36 @@
+# Tiny run to verify the whole vision pipeline end to end (no NIH download needed).
+project:
+  name: openmed-smoke
+  seed: 42
+  output_dir: runs/smoke
+
+data:
+  dataset: medmnist
+  medmnist_root: data/raw/medmnist
+  medmnist_size: 64
+  image_size: 64
+  batch_size: 128
+  num_workers: 4
+  max_samples: 4096
+  mean: [0.5056, 0.5056, 0.5056]
+  std: [0.252, 0.252, 0.252]
+
+model:
+  backbone: densenet121
+  pretrained: false
+  num_classes: 14
+  dropout: 0.0
+
+train:
+  epochs: 1
+  optimizer: adamw
+  lr: 0.001
+  weight_decay: 0.0001
+  scheduler: cosine
+  warmup_epochs: 0
+  pos_weight: false
+  amp: false
+  grad_clip: 1.0
+  early_stopping_patience: 1
+  monitor: mean_auroc
+  device: auto

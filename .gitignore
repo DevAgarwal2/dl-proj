@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.env
+.pytest_cache/
+
+# Data / artifacts (keep folders, ignore contents)
+data/raw/**
+data/processed/**
+data/corpus/**
+data/vectorstore/**
+data/eval/**
+!data/**/.gitkeep
+# Keep the small seed corpus that ships with the repo.
+!data/corpus/seed/
+!data/corpus/seed/**
+
+# Models (large; download separately into models/)
+models/*
+!models/.gitkeep
+
+# Training outputs
+runs/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+*.log

@@ -1,0 +1,13 @@
+file,kind,ground_truth,pred_top1,prob_top1,pred_top2,prob_top2,pred_top3,prob_top3,top1_in_truth
+images/single_000094.png,single,Cardiomegaly,Edema,0.748,Cardiomegaly,0.739,Infiltration,0.631,0
+images/single_000027.png,single,Effusion,Effusion,0.803,Consolidation,0.697,Pneumonia,0.677,1
+images/single_000794.png,single,Pneumonia,Atelectasis,0.441,Nodule,0.402,Infiltration,0.362,0
+images/single_000102.png,single,Pneumothorax,Pleural_Thickening,0.916,Pneumothorax,0.898,Emphysema,0.803,0
+images/single_000082.png,single,Emphysema,Nodule,0.742,Mass,0.693,Fibrosis,0.625,0
+images/single_000007.png,single,Nodule,Nodule,0.611,Mass,0.560,Emphysema,0.421,1
+images/single_000178.png,single,Edema,Edema,0.923,Infiltration,0.731,Consolidation,0.674,1
+images/single_000018.png,single,Hernia,Cardiomegaly,0.775,Fibrosis,0.590,Infiltration,0.450,0
+images/multi_000016.png,multi,Atelectasis|Infiltration|Emphysema,Pneumothorax,0.919,Emphysema,0.868,Pleural_Thickening,0.810,0
+images/multi_000063.png,multi,Atelectasis|Pneumothorax|Emphysema,Emphysema,0.651,Cardiomegaly,0.638,Atelectasis,0.624,1
+images/normal_000000.png,normal,Normal,Mass,0.747,Nodule,0.658,Emphysema,0.636,0
+images/normal_000001.png,normal,Normal,Nodule,0.495,Infiltration,0.402,Fibrosis,0.293,0

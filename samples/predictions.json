@@ -1,0 +1,270 @@
+[
+  {
+    "file": "images/single_000094.png",
+    "ground_truth": [
+      "Cardiomegaly"
+    ],
+    "probabilities": {
+      "Edema": 0.7481,
+      "Cardiomegaly": 0.739,
+      "Infiltration": 0.6306,
+      "Consolidation": 0.6299,
+      "Pneumonia": 0.5969,
+      "Atelectasis": 0.5624,
+      "Effusion": 0.5357,
+      "Mass": 0.2662,
+      "Pleural_Thickening": 0.2293,
+      "Nodule": 0.1524,
+      "Pneumothorax": 0.0958,
+      "Emphysema": 0.0516,
+      "Fibrosis": 0.0352,
+      "Hernia": 0.0032
+    }
+  },
+  {
+    "file": "images/single_000027.png",
+    "ground_truth": [
+      "Effusion"
+    ],
+    "probabilities": {
+      "Effusion": 0.8032,
+      "Consolidation": 0.6972,
+      "Pneumonia": 0.677,
+      "Mass": 0.6661,
+      "Infiltration": 0.6169,
+      "Pleural_Thickening": 0.5797,
+      "Atelectasis": 0.498,
+      "Cardiomegaly": 0.4729,
+      "Edema": 0.4658,
+      "Nodule": 0.4566,
+      "Emphysema": 0.124,
+      "Fibrosis": 0.0813,
+      "Pneumothorax": 0.0718,
+      "Hernia": 0.0008
+    }
+  },
+  {
+    "file": "images/single_000794.png",
+    "ground_truth": [
+      "Pneumonia"
+    ],
+    "probabilities": {
+      "Atelectasis": 0.4411,
+      "Nodule": 0.4024,
+      "Infiltration": 0.3624,
+      "Mass": 0.2308,
+      "Fibrosis": 0.2301,
+      "Pneumonia": 0.2286,
+      "Pleural_Thickening": 0.2132,
+      "Cardiomegaly": 0.1287,
+      "Emphysema": 0.0827,
+      "Consolidation": 0.0796,
+      "Hernia": 0.066,
+      "Effusion": 0.0656,
+      "Pneumothorax": 0.0547,
+      "Edema": 0.0243
+    }
+  },
+  {
+    "file": "images/single_000102.png",
+    "ground_truth": [
+      "Pneumothorax"
+    ],
+    "probabilities": {
+      "Pleural_Thickening": 0.9163,
+      "Pneumothorax": 0.8983,
+      "Emphysema": 0.803,
+      "Effusion": 0.7827,
+      "Mass": 0.6253,
+      "Atelectasis": 0.5949,
+      "Infiltration": 0.4721,
+      "Fibrosis": 0.4555,
+      "Nodule": 0.4398,
+      "Consolidation": 0.4287,
+      "Cardiomegaly": 0.3781,
+      "Pneumonia": 0.2603,
+      "Edema": 0.053,
+      "Hernia": 0.0007
+    }
+  },
+  {
+    "file": "images/single_000082.png",
+    "ground_truth": [
+      "Emphysema"
+    ],
+    "probabilities": {
+      "Nodule": 0.7417,
+      "Mass": 0.6931,
+      "Fibrosis": 0.6249,
+      "Pneumonia": 0.5991,
+      "Pleural_Thickening": 0.5406,
+      "Emphysema": 0.5235,
+      "Effusion": 0.4904,
+      "Atelectasis": 0.4731,
+      "Pneumothorax": 0.3595,
+      "Infiltration": 0.272,
+      "Consolidation": 0.2602,
+      "Edema": 0.1937,
+      "Hernia": 0.11,
+      "Cardiomegaly": 0.0494
+    }
+  },
+  {
+    "file": "images/single_000007.png",
+    "ground_truth": [
+      "Nodule"
+    ],
+    "probabilities": {
+      "Nodule": 0.6113,
+      "Mass": 0.5599,
+      "Emphysema": 0.4211,
+      "Pleural_Thickening": 0.4099,
+      "Atelectasis": 0.3375,
+      "Fibrosis": 0.3107,
+      "Pneumonia": 0.2731,
+      "Hernia": 0.27,
+      "Infiltration": 0.2391,
+      "Cardiomegaly": 0.1881,
+      "Edema": 0.1538,
+      "Consolidation": 0.1428,
+      "Pneumothorax": 0.1204,
+      "Effusion": 0.0997
+    }
+  },
+  {
+    "file": "images/single_000178.png",
+    "ground_truth": [
+      "Edema"
+    ],
+    "probabilities": {
+      "Edema": 0.9232,
+      "Infiltration": 0.7311,
+      "Consolidation": 0.6741,
+      "Pneumonia": 0.6467,
+      "Nodule": 0.5532,
+      "Mass": 0.4818,
+      "Cardiomegaly": 0.4241,
+      "Atelectasis": 0.3973,
+      "Effusion": 0.3711,
+      "Emphysema": 0.2131,
+      "Pleural_Thickening": 0.1618,
+      "Pneumothorax": 0.1108,
+      "Fibrosis": 0.0688,
+      "Hernia": 0.0028
+    }
+  },
+  {
+    "file": "images/single_000018.png",
+    "ground_truth": [
+      "Hernia"
+    ],
+    "probabilities": {
+      "Cardiomegaly": 0.7746,
+      "Fibrosis": 0.5904,
+      "Infiltration": 0.45,
+      "Nodule": 0.3836,
+      "Atelectasis": 0.3748,
+      "Pleural_Thickening": 0.3133,
+      "Effusion": 0.2959,
+      "Pneumonia": 0.1726,
+      "Emphysema": 0.1226,
+      "Pneumothorax": 0.1034,
+      "Mass": 0.0952,
+      "Hernia": 0.0862,
+      "Consolidation": 0.0694,
+      "Edema": 0.0225
+    }
+  },
+  {
+    "file": "images/multi_000016.png",
+    "ground_truth": [
+      "Atelectasis",
+      "Infiltration",
+      "Emphysema"
+    ],
+    "probabilities": {
+      "Pneumothorax": 0.9187,
+      "Emphysema": 0.8678,
+      "Pleural_Thickening": 0.8104,
+      "Mass": 0.6424,
+      "Effusion": 0.6117,
+      "Nodule": 0.5303,
+      "Atelectasis": 0.525,
+      "Fibrosis": 0.4442,
+      "Infiltration": 0.4415,
+      "Consolidation": 0.4048,
+      "Pneumonia": 0.2182,
+      "Cardiomegaly": 0.0972,
+      "Edema": 0.0797,
+      "Hernia": 0.0012
+    }
+  },
+  {
+    "file": "images/multi_000063.png",
+    "ground_truth": [
+      "Atelectasis",
+      "Pneumothorax",
+      "Emphysema"
+    ],
+    "probabilities": {
+      "Emphysema": 0.6507,
+      "Cardiomegaly": 0.6381,
+      "Atelectasis": 0.6242,
+      "Pleural_Thickening": 0.6022,
+      "Fibrosis": 0.5846,
+      "Pneumothorax": 0.5574,
+      "Mass": 0.5417,
+      "Nodule": 0.5173,
+      "Infiltration": 0.4647,
+      "Effusion": 0.4425,
+      "Consolidation": 0.3707,
+      "Pneumonia": 0.3665,
+      "Edema": 0.1426,
+      "Hernia": 0.0199
+    }
+  },
+  {
+    "file": "images/normal_000000.png",
+    "ground_truth": [
+      "Normal"
+    ],
+    "probabilities": {
+      "Mass": 0.7468,
+      "Nodule": 0.6584,
+      "Emphysema": 0.6359,
+      "Pleural_Thickening": 0.5664,
+      "Fibrosis": 0.4571,
+      "Infiltration": 0.4509,
+      "Pneumothorax": 0.3677,
+      "Consolidation": 0.3253,
+      "Pneumonia": 0.3239,
+      "Atelectasis": 0.2766,
+      "Effusion": 0.2265,
+      "Edema": 0.1246,
+      "Cardiomegaly": 0.0906,
+      "Hernia": 0.0035
+    }
+  },
+  {
+    "file": "images/normal_000001.png",
+    "ground_truth": [
+      "Normal"
+    ],
+    "probabilities": {
+      "Nodule": 0.4949,
+      "Infiltration": 0.4021,
+      "Fibrosis": 0.2931,
+      "Mass": 0.2437,
+      "Pleural_Thickening": 0.2088,
+      "Pneumonia": 0.1982,
+      "Atelectasis": 0.1408,
+      "Pneumothorax": 0.1258,
+      "Consolidation": 0.09,
+      "Emphysema": 0.0846,
+      "Effusion": 0.0397,
+      "Edema": 0.0065,
+      "Hernia": 0.0061,
+      "Cardiomegaly": 0.0002
+    }
+  }
+]

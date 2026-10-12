@@ -1,0 +1,35 @@
+# Real training run on MedMNIST ChestMNIST (NIH ChestX-ray14-derived, 14 labels).
+project:
+  name: openmed-chestmnist
+  seed: 42
+  output_dir: runs/chestmnist
+
+data:
+  dataset: medmnist              # official train/val/test splits
+  medmnist_root: data/raw/medmnist
+  medmnist_size: 64
+  image_size: 64
+  batch_size: 128
+  num_workers: 4
+  mean: [0.5056, 0.5056, 0.5056]
+  std: [0.252, 0.252, 0.252]
+
+model:
+  backbone: densenet121
+  pretrained: true               # ImageNet weights (downloaded by timm)
+  num_classes: 14
+  dropout: 0.0
+
+train:
+  epochs: 12
+  optimizer: adamw
+  lr: 0.001
+  weight_decay: 0.0001
+  scheduler: cosine
+  warmup_epochs: 1
+  pos_weight: true
+  amp: false
+  grad_clip: 1.0
+  early_stopping_patience: 4
+  monitor: mean_auroc
+  device: auto

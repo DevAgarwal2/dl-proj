@@ -1,0 +1,60 @@
+project:
+  name: openmed-rag
+
+embeddings:
+  # On-device EmbeddingGemma-2 Q8_0 served by llama.cpp (recommended).
+  #   make embed-server      # starts the server on :8081
+  # The server is prompt-conditioned-aware via the client: queries get the
+  # "task: search result | query:" prefix, documents the "title: none | text:"
+  # prefix (see openmed.rag.embeddings.LlamaServerEmbedder).
+  backend: llama-server
+  base_url: http://127.0.0.1:8081
+  model_name: embeddinggemma-2
+  timeout: 600
+  # Alternatives:
+  #   backend: sentence-transformers        # HuggingFace embedder
+  #   model_name: NeuML/pubmedbert-base-embeddings
+  #   device: cpu
+  #   backend: hashing                       # deterministic offline fallback
+  # NOTE: changing the backend changes the vector dimension/space -> re-run `make ingest`.
+
+vectorstore:
+  path: data/vectorstore/openmed
+  metric: cosine
+
+retrieval:
+  top_k: 5
+  # Drop passages below this dense cosine score; if nothing passes, the pipeline
+  # refuses to answer instead of letting the LLM hallucinate. Calibrated with
+  # `make eval-retrieval` on EmbeddingGemma: off-topic top-1 ~0.59-0.63 vs
+  # in-domain first-hit p10 ~0.83, so 0.72 sits cleanly between the two.
+  min_score: 0.72
+  # Fuse dense retrieval with BM25 (Reciprocal Rank Fusion) to catch exact
+  # medical terms/acronyms. Off by default: measured slightly worse than pure
+  # dense EmbeddingGemma on the gold set; enable (and re-tune alpha) for
+  # acronym-heavy corpora.
+  lexical: false
+  alpha: 0.6
+  # Cap chunks from the same source document in the top-k so a long abstract
+  # cannot flood the context window with near-duplicate text.
+  max_per_doc: 1
+
+llm:
+  # llama-server OpenAI-compatible endpoint (see scripts/run_llama_server.sh).
+  base_url: http://127.0.0.1:8080/v1
+  # Default generator: LFM2.5-1.2B-Instruct (the 350M baseline scored worse on
+  # every faithfulness / usability metric and is no longer used).
+  model: LFM2.5-1.2B-Instruct-Q6_K.gguf
+  temperature: 0.1
+  top_p: 0.9
+  max_tokens: 512
+  timeout: 120
+  strip_reasoning: true          # drop <think>...</think> blocks from output
+
+ingest:
+  corpus_dir: data/corpus
+  # Most abstracts are ~1.5k chars; a large window keeps each abstract as one
+  # chunk so the retriever returns whole documents rather than fragments.
+  chunk_size: 2000
+  chunk_overlap: 200
+  min_chunk_chars: 80
