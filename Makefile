@@ -3,7 +3,7 @@ VENV_PY := $(shell [ -x .venv/bin/python ] && echo .venv/bin/python || echo pyth
 PYTHON ?= $(VENV_PY)
 export PYTHONPATH := src
 
-.PHONY: help setup venv doctor prepare smoke train train-chestmnist evaluate predict ingest fetch-corpus query llama llama-stop embed-server embed-server-stop build-gold eval-retrieval eval-answers serve ui test clean
+.PHONY: help setup venv doctor prepare smoke train train-chestmnist evaluate predict ingest fetch-corpus query llama llama-stop embed-server embed-server-stop build-gold eval-retrieval eval-answers demo serve ui test clean
 
 help:
 	@echo "OpenMed targets:"
@@ -23,6 +23,7 @@ help:
 	@echo "  eval-retrieval    score retrieval (Recall@k / MRR / nDCG)"
 	@echo "  eval-answers      judge answer faithfulness with the local LLM"
 	@echo "  query      ask the RAG pipeline a question"
+	@echo "  demo       run the live end-to-end demo script"
 	@echo "  llama      start the local llama.cpp server (LFM2.5-1.2B)"
 	@echo "  llama-stop stop the llama.cpp server"
 	@echo "  serve      run the FastAPI inference server"
@@ -75,6 +76,9 @@ eval-answers:
 
 query:
 	$(PYTHON) -m openmed.cli query --config configs/rag.yaml --question "$(Q)"
+
+demo:
+	$(PYTHON) scripts/demo.py $(IMAGE)
 
 llama:
 	bash scripts/run_llama_server.sh start

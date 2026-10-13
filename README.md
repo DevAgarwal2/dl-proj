@@ -129,6 +129,9 @@ The model is a **research prototype** — it produces false alarms on normal X-r
 ### Requirements
 - Python 3.10+
 - [`llama.cpp`](https://github.com/ggml-org/llama.cpp) (`llama-server` on your PATH — e.g. `brew install llama.cpp`)
+  > ⚠️ EmbeddingGemma-2 needs a **recent** `llama-server` build. If you see
+  > `unknown model architecture: 'gemma-embedding2'`, point `OPENMED_EMBED_BIN`
+  > at a newer build of `llama-server`.
 - ~1.5 GB free disk for the two models
 - A Mac with Apple Silicon (uses MPS) or a CPU. CUDA also works.
 
@@ -179,6 +182,18 @@ make serve                             # or the REST API at http://127.0.0.1:800
 ---
 
 ## 6. Using it
+
+**Visual one-pager** — open `docs/demo.html` in a browser for a slide-ready
+summary (problem → solution → results) you can show in a presentation.
+
+**Live terminal demo** — one command, no UI:
+```bash
+make embed-server && make llama     # start both servers
+make demo                           # uses a bundled sample X-ray
+make demo IMAGE=samples/images/single_000018.png
+```
+It prints the ranked findings, saves a Grad-CAM heat-map to `outputs/`, then
+writes the cited explanation.
 
 **Web UI (`make ui` → http://127.0.0.1:8501)** — three tabs:
 - **Diagnose** — upload a chest X-ray, see the Grad-CAM overlay and a probability chart, then generate a cited explanation.

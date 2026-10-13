@@ -25,6 +25,9 @@ data/eval/**
 models/*
 !models/.gitkeep
 
+# Generated demo output
+outputs/
+
 # Training outputs
 runs/
 checkpoints/

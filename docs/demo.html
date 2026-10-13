@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OpenMed — Demo</title>
+<style>
+  :root{
+    --navy:#0b1f3a; --navy2:#12294d; --ink:#0f172a; --muted:#5b6b82;
+    --line:#e2e8f0; --bg:#f5f7fb; --card:#ffffff;
+    --blue:#2563eb; --teal:#0d9488; --amber:#d97706; --red:#dc2626; --green:#16a34a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       color:var(--ink);background:var(--bg);line-height:1.5}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px 60px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:38px 22px 30px}
+  header .wrap{padding:0}
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo{width:46px;height:46px;border-radius:12px;background:#fff;color:var(--navy);
+        display:grid;place-items:center;font-size:24px;font-weight:800}
+  h1{margin:0;font-size:30px;letter-spacing:.2px}
+  .sub{margin:6px 0 0;color:#c7d5ea;font-size:15px}
+  h2{font-size:20px;margin:38px 0 14px;display:flex;align-items:center;gap:10px}
+  h2 .num{width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;
+          font-size:14px;display:grid;place-items:center;flex:0 0 auto}
+  p{margin:8px 0}
+  .muted{color:var(--muted)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;
+        box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+
+  /* problem vs solution */
+  .boxbad{border-left:5px solid var(--red)}
+  .boxgood{border-left:5px solid var(--green)}
+  .term{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px;
+        background:#0f172a;color:#e6edf7;border-radius:10px;padding:14px 16px;white-space:pre-wrap}
+  .term .k{color:#7dd3fc} .term .c{color:#fca5a5} .term .g{color:#86efac} .term .m{color:#cbd5e1}
+
+  /* pipeline */
+  .flow{display:flex;align-items:stretch;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .step{flex:1 1 180px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+  .step .ico{font-size:22px}
+  .step h3{margin:6px 0 4px;font-size:15px}
+  .step p{margin:0;font-size:13px;color:var(--muted)}
+  .arrow{align-self:center;color:#94a3b8;font-size:22px}
+  @media(max-width:760px){.arrow{transform:rotate(90deg)}}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:760px){.stats{grid-template-columns:1fr}}
+  .stat{text-align:center;padding:20px 14px}
+  .stat .v{font-size:30px;font-weight:800;color:var(--blue)}
+  .stat .l{font-size:13px;color:var(--muted);margin-top:4px}
+
+  ul.clean{margin:8px 0 0;padding-left:20px}
+  ul.clean li{margin:5px 0}
+  .pill{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:999px;
+        padding:2px 10px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+  .foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);
+        color:var(--muted);font-size:13px}
+  .warn{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:10px;
+        padding:10px 14px;font-size:13px;margin-top:10px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">🩺</div>
+      <div>
+        <h1>OpenMed</h1>
+        <div class="sub">An AI that reads chest X-rays and explains its answer with real medical references — fully offline.</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2><span class="num">1</span> The problem</h2>
+  <div class="grid2">
+    <div class="card boxbad">
+      <strong>What an AI normally gives you</strong>
+      <div class="term" style="margin-top:10px">Cardiomegaly: 89%</div>
+      <ul class="clean">
+        <li>❓ <b>Why?</b> — no reason</li>
+        <li>❓ <b>Where?</b> — didn't show the image region</li>
+        <li>❓ <b>So what?</b> — doesn't explain the finding</li>
+        <li>❓ <b>Evidence?</b> — no sources to check</li>
+      </ul>
+      <p class="muted" style="margin-top:10px">A dead number you cannot trust or act on.</p>
+    </div>
+    <div class="card boxgood">
+      <strong>What OpenMed gives you</strong>
+      <div class="term" style="margin-top:10px"><span class="k">Cardiomegaly (89%)</span> — model looked at the heart region (heat-map).
+
+<span class="m">"The chest X-ray shows an enlarged cardiac
+silhouette, a key sign of cardiomegaly [1].
+Common causes include hypertension,
+cardiomyopathy and valvular disease [2].
+This is a research tool, not medical advice."</span>
+
+<span class="g">[1] Identifying cardiomegaly in chest X-rays…
+[2] Cardiomegaly on chest radiographs as a
+    predictor of heart disease…</span></div>
+      <p class="muted" style="margin-top:10px">A number turned into an explanation with proof.</p>
+    </div>
+  </div>
+
+  <h2><span class="num">2</span> How it works — four steps, all on your laptop</h2>
+  <div class="flow">
+    <div class="step">
+      <div class="ico">🫁</div>
+      <h3>1. Predict</h3>
+      <p>A fine-tuned CNN (DenseNet121) scores 14 chest conditions from the X-ray.</p>
+    </div>
+    <div class="arrow">➜</div>
+    <div class="step">
+      <div class="ico">🔥</div>
+      <h3>2. Show where</h3>
+      <p>Grad-CAM highlights the exact image region behind each prediction.</p>
+    </div>
+    <div class="arrow">➜</div>
+    <div class="step">
+      <div class="ico">📚</div>
+      <h3>3. Find evidence</h3>
+      <p>EmbeddingGemma-2 searches ~500 real medical abstracts for relevant passages.</p>
+    </div>
+    <div class="arrow">➜</div>
+    <div class="step">
+      <div class="ico">✍️</div>
+      <h3>4. Explain</h3>
+      <p>A local 1.2B model writes a short, cited explanation — and refuses if evidence is weak.</p>
+    </div>
+  </div>
+  <p class="muted" style="margin-top:10px">No internet. No cloud. No per-query cost.</p>
+
+  <h2><span class="num">3</span> Results (measured, not claimed)</h2>
+  <div class="stats">
+    <div class="card stat"><div class="v">0.784</div><div class="l">Classifier mean AUROC<br>(14 conditions, 22,433 test images)</div></div>
+    <div class="card stat"><div class="v">0.968</div><div class="l">Retrieval MRR@10<br>(finds the right paper, ranks it #1)</div></div>
+    <div class="card stat"><div class="v">100%</div><div class="l">Usable explanations<br>(coherent, cited, no artifacts)</div></div>
+  </div>
+  <p style="margin-top:12px">
+    <span class="pill">Off-topic questions are refused</span>
+    <span class="pill">1 paper per result (no duplicates)</span>
+    <span class="pill">33 unit tests pass</span>
+  </p>
+
+  <h2><span class="num">4</span> What it does <em>not</em> do</h2>
+  <div class="card">
+    <ul class="clean">
+      <li><b>Chest X-rays only</b> — exactly 14 conditions. Not CT, MRI, or other body parts.</li>
+      <li><b>Not a diagnosis</b> — no clinical validation, not a medical device.</li>
+      <li><b>Research-grade accuracy</b> — 64×64 images, so it produces false alarms.</li>
+    </ul>
+    <div class="warn">OpenMed is a research / learning prototype. Always consult a doctor.</div>
+  </div>
+
+  <div class="foot">
+    Built with PyTorch · timm · MedMNIST · Grad-CAM · EmbeddingGemma-2 · llama.cpp · LFM (Liquid AI) · FastAPI · Streamlit.
+  </div>
+</div>
+
+</body>
+</html>
